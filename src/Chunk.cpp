@@ -56,3 +56,8 @@ void Chunk::Deallocate(void* p, std::size_t blockSize)
 	++blocksAvailable;
 }
 
+void Chunk::Release()
+{
+	delete[] pData;
+}
+
