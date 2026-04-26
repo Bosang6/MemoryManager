@@ -19,7 +19,7 @@ SmallObjAllocator::SmallObjAllocator(
 	, maxObjectSize(maxObjectSize)
 {
 }
-
+// 迭代器和lower_bound需要仔细研究一下语法
 void* SmallObjAllocator::Allocate(std::size_t numBytes)
 {
 	if (numBytes > maxObjectSize)
@@ -39,4 +39,23 @@ void* SmallObjAllocator::Allocate(std::size_t numBytes)
 	}
 	pLastAlloc = &*i;
 	return pLastAlloc->Allocate();
+}
+
+void SmallObjAllocator::Deallocate(void* p, std::size_t numBytes)
+{
+	if (numBytes > maxObjectSize)
+		return operator delete(p);
+
+	if (pLastDealloc && pLastDealloc->GetBlockSize() == numBytes)
+	{
+		pLastDealloc->Deallocate(p);
+	}
+
+	Pool::iterator i = std::lower_bound(pool.begin(), pool.end(), numBytes, CompareFixedAllocatorSize());
+
+	assert(i != pool.end());
+	assert(i->GetBlockSize() == numBytes);
+	
+	pLastDealloc = &*i;
+	pLastDealloc->Deallocate(p);
 }
