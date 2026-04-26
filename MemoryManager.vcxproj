@@ -102,6 +102,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(ProjectDir)include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -116,6 +117,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(ProjectDir)include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -124,6 +126,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="MemoryManager.cpp" />
+    <ClCompile Include="src\Chunk.cpp" />
+    <ClCompile Include="src\FixedAllocator.cpp" />
+    <ClCompile Include="src\SmallObjAllocator.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\Chunk.h" />
+    <ClInclude Include="include\FixedAllocator.h" />
+    <ClInclude Include="include\SmallObjAllocator.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

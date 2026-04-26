@@ -10,7 +10,7 @@ void Chunk::Init(std::size_t blockSize, unsigned char blocks) {
 	unsigned char* p = pData;
 	/* 
 		 Block 0				       Block 1							   Block n-1
-	   | {block id = 0, free space } | {block id = 1, free space } | ... | {block id = blocks - 1, free space } |
+	   | {next free = 1, free space } | {block id = 2, free space } | ... | {block id = blocks, free space } |
 	     ^
 		 |
 		 p
@@ -37,7 +37,7 @@ void* Chunk::Allocate(std::size_t blockSize)
 
 void Chunk::Deallocate(void* p, std::size_t blockSize)
 {
-	if (!p || blockSize <= 0 || p < pData) return;
+	assert(p >= pData);
 
 	unsigned char* toRelease = static_cast<unsigned char*>(p);
 

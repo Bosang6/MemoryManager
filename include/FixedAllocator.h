@@ -16,6 +16,7 @@ public:
 
 	void* Allocate();
 	void Deallocate(void* p);
+	std::size_t GetBlockSize() const;
 
 private:
 	Chunk* VicinityFind(void* p);

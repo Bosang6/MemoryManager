@@ -7,20 +7,21 @@ FixedAllocator::FixedAllocator(std::size_t blockSize)
 {
 	assert(blockSize > 0);
 
-	//prev_ = next_ = this;
+	prev = next = this;
 
 	std::size_t calNumBlocks = DEFAULT_CHUNK_SIZE / blockSize;
 	if (calNumBlocks > UCHAR_MAX)
 		calNumBlocks = UCHAR_MAX;
 	else if (calNumBlocks == 0)
 	{
-		calNumBlocks = 8 * blockSize;
+		assert(false);
+		//calNumBlocks = 8 * blockSize; //???? bug? calNumBlocks > 255
 	}
 	numBlocks = static_cast<unsigned char>(calNumBlocks);
 	assert(numBlocks == calNumBlocks);
 }
 
-//拷贝构造 没看懂
+
 FixedAllocator::FixedAllocator(const FixedAllocator& rhs)
 	: blockSize(rhs.blockSize)
 	, numBlocks(rhs.numBlocks)
@@ -40,6 +41,7 @@ FixedAllocator::FixedAllocator(const FixedAllocator& rhs)
 		: 0;
 }
 
+//链表不一致问题
 FixedAllocator& FixedAllocator::operator=(const FixedAllocator& rhs)
 {
 	FixedAllocator copy(rhs);
@@ -182,7 +184,7 @@ void FixedAllocator::DoDeallocate(void* p)
 		if (&lastChunk == deallocChunk)
 		{
 			/*
-				[ chunk0 ][ chunk1 ][ chunk2 ][ chunk3 ]
+				[ chunk0 ][ chunk1 ][ chunk2 ][ empty ]
 											  ↑
 											  deallocChunk
 											  lastChunk
@@ -229,7 +231,7 @@ void FixedAllocator::DoDeallocate(void* p)
 		else
 		{
 			/*
-				[ chunk0 ][ empty ][ chunk2 ][ used ]
+				[ chunk0 ][ empty ][ chunk2 ][ chunk3 ]
 						  ↑                  ↑
 						  deallocChunk       lastChunk
 			*/
@@ -237,11 +239,16 @@ void FixedAllocator::DoDeallocate(void* p)
 			std::swap(*deallocChunk, lastChunk);
 			allocChunk = &chunks.back();
 			/*
-				[ chunk0 ][ used ][ chunk2 ][ empty ]
-						  ↑                 ↑
-						  lastChunk         deallocChunk
-											allocChunk
+				[ chunk0 ][ chunk3 ][ chunk2 ][ empty ]
+						  ↑                   ↑
+						  lastChunk           deallocChunk
+											  allocChunk
 			*/
 		}
 	}
+}
+
+std::size_t FixedAllocator::GetBlockSize() const
+{
+	return blockSize;
 }
