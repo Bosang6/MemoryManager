@@ -38,5 +38,14 @@
     <ClInclude Include="include\SmallObjAllocator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\SmallObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SingletonHolder.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Timer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

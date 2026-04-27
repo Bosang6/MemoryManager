@@ -133,7 +133,10 @@
   <ItemGroup>
     <ClInclude Include="include\Chunk.h" />
     <ClInclude Include="include\FixedAllocator.h" />
+    <ClInclude Include="include\SingletonHolder.h" />
     <ClInclude Include="include\SmallObjAllocator.h" />
+    <ClInclude Include="include\SmallObject.h" />
+    <ClInclude Include="include\Timer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
