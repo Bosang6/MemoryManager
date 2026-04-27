@@ -13,6 +13,9 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
     </Filter>
+    <Filter Include="Test">
+      <UniqueIdentifier>{ba1ab443-888a-442b-a229-db45be5fa863}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MemoryManager.cpp">
@@ -26,6 +29,9 @@
     </ClCompile>
     <ClCompile Include="src\SmallObjAllocator.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="tests\AllocatorBenchmark.cpp">
+      <Filter>Test</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -46,6 +52,15 @@
     </ClInclude>
     <ClInclude Include="include\Timer.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="tests\AllocatorBenchmark.h">
+      <Filter>Test</Filter>
+    </ClInclude>
+    <ClInclude Include="tests\SystemAllocator_SmallObj.h">
+      <Filter>Test</Filter>
+    </ClInclude>
+    <ClInclude Include="tests\SmallAllocator_SmallObj.h">
+      <Filter>Test</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

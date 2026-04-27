@@ -102,7 +102,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)include;$(ProjectDir)tests</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -117,7 +117,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)include;$(ProjectDir)tests</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -129,6 +129,7 @@
     <ClCompile Include="src\Chunk.cpp" />
     <ClCompile Include="src\FixedAllocator.cpp" />
     <ClCompile Include="src\SmallObjAllocator.cpp" />
+    <ClCompile Include="tests\AllocatorBenchmark.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Chunk.h" />
@@ -137,6 +138,9 @@
     <ClInclude Include="include\SmallObjAllocator.h" />
     <ClInclude Include="include\SmallObject.h" />
     <ClInclude Include="include\Timer.h" />
+    <ClInclude Include="tests\AllocatorBenchmark.h" />
+    <ClInclude Include="tests\SmallAllocator_SmallObj.h" />
+    <ClInclude Include="tests\SystemAllocator_SmallObj.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

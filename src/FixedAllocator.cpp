@@ -1,4 +1,6 @@
 #include "FixedAllocator.h"
+#include "AllocatorBenchmark.h"
+
 FixedAllocator::FixedAllocator(std::size_t blockSize)
 	: blockSize(blockSize)
 	, allocChunk(0)

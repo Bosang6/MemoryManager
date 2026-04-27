@@ -22,7 +22,6 @@ private:
 	Chunk* VicinityFind(void* p);
 	void DoDeallocate(void* p);
 	void Swap(FixedAllocator& rhs);
-
 	std::size_t blockSize;
 	unsigned char numBlocks;
 	typedef std::vector<Chunk> Chunks;
