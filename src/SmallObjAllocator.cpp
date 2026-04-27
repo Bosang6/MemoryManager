@@ -48,8 +48,7 @@ void SmallObjAllocator::Deallocate(void* p, std::size_t numBytes)
 
 	if (pLastDealloc && pLastDealloc->GetBlockSize() == numBytes)
 	{
-		pLastDealloc->Deallocate(p);
-		return;
+		return pLastDealloc->Deallocate(p);
 	}
 
 	Pool::iterator i = std::lower_bound(pool.begin(), pool.end(), numBytes, CompareFixedAllocatorSize());

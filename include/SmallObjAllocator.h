@@ -18,6 +18,7 @@ private:
 	Pool pool;
 	FixedAllocator* pLastAlloc;
 	FixedAllocator* pLastDealloc;
+protected:
 	std::size_t chunkSize;
 	std::size_t maxObjectSize;
 };
