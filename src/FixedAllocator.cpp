@@ -1,5 +1,4 @@
 #include "FixedAllocator.h"
-
 FixedAllocator::FixedAllocator(std::size_t blockSize)
 	: blockSize(blockSize)
 	, allocChunk(0)
@@ -83,13 +82,6 @@ void* FixedAllocator::Allocate()
 		Chunks::iterator i = chunks.begin();
 		for (;; ++i) 
 		{
-			// Try to find an available chunk
-			if (i->blocksAvailable > 0)
-			{
-				allocChunk = &*i;
-				break;
-			}
-
 			// Create a new chunk
 			if (i == chunks.end())
 			{
@@ -98,7 +90,14 @@ void* FixedAllocator::Allocate()
 				newChunk.Init(blockSize, numBlocks);
 				chunks.push_back(newChunk);
 				allocChunk = &chunks.back();
-				deallocChunk = &chunks.back();
+				deallocChunk = &chunks.front();
+				break;
+			}
+
+			// Try to find an available chunk
+			if (i->blocksAvailable > 0)
+			{
+				allocChunk = &*i;
 				break;
 			}
 		}
@@ -210,7 +209,7 @@ void FixedAllocator::DoDeallocate(void* p)
 		}
 
 		// deallocChunk is not the last chunk.
-		if (lastChunk.blocksAvailable = numBlocks)
+		if (lastChunk.blocksAvailable == numBlocks)
 		{
 			/*
 				[ chunk0 ][ empty ][ chunk2 ][ empty ]

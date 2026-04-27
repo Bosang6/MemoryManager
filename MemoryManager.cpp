@@ -51,7 +51,7 @@ void TestBulk_SmallObjAllocator(
 
         for (std::size_t i = 0; i < count; ++i)
         {
-            ptrs.push_back(::operator new(blockSize));
+            ptrs.push_back(allocator.Allocate(blockSize));
         }
     }
 
@@ -61,7 +61,7 @@ void TestBulk_SmallObjAllocator(
 
         for (void* p : ptrs)
         {
-            ::operator delete(p);
+            allocator.Deallocate(p, blockSize);
         }
     }
 }
