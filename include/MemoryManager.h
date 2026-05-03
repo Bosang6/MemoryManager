@@ -3,8 +3,8 @@
 #include "SmallObjAllocator.h"
 #include "GeneralAllocator.h"
 
-#ifndef SMALL_OBJ_MAX_SIZE
-#define SMALL_OBJ_MAX_SIZE 64
+#ifndef MAX_SMALL_OBJECT_SIZE
+#define MAX_SMALL_OBJECT_SIZE 64
 #endif
 
 

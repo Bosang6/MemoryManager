@@ -33,6 +33,9 @@
     <ClCompile Include="tests\AllocatorBenchmark.cpp">
       <Filter>Test</Filter>
     </ClCompile>
+    <ClCompile Include="src\MemoryManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Chunk.h">
@@ -61,6 +64,15 @@
     </ClInclude>
     <ClInclude Include="tests\SmallAllocator_SmallObj.h">
       <Filter>Test</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GeneralAllocator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MemoryManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MemoryFunctions.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
