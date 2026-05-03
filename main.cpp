@@ -25,6 +25,9 @@ private:
 int main()
 {
     //RunAllBenchmarks();
+
+    void* p = MM_MALLOC(10);
+    MM_FREE(p, 10);
     
     A* a = MM_NEW(A, 1, 2);
     MM_DELETE(a);
