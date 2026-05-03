@@ -1,8 +1,6 @@
-#include <functional>
 #include "SmallObjAllocator.h"
 
 struct CompareFixedAllocatorSize
-	: std::binary_function<const FixedAllocator &, std::size_t, bool>
 {
 	bool operator()(const FixedAllocator& x, std::size_t numBytes) const
 	{
