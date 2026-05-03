@@ -9,6 +9,7 @@ public:
 	{
 		std::cout << "using GeneralAllocator" << std::endl;
 #ifdef USE_MEMORY_MANAGER_GLOBAL
+		//::operator new by default use malloc
 		return std::malloc(size);
 #else
 		return ::operator new(size);

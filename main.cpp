@@ -1,7 +1,7 @@
 //#include "AllocatorBenchmark.h"
 #include "MemoryFunctions.h"
 #include <iostream>
-
+#include "MemoryManagerGlobal.h"
 class A 
 {
 public:
@@ -26,14 +26,28 @@ int main()
 {
     //RunAllBenchmarks();
 
-    void* p = MM_MALLOC(10);
-    MM_FREE(p, 10);
-    
-    A* a = MM_NEW(A, 1, 2);
-    MM_DELETE(a);
+#pragma region Functions Test
+    //void* p = MM_MALLOC(10);
+    //MM_FREE(p, 10);
+    //
+    //A* a = MM_NEW(A, 1, 2);
+    //MM_DELETE(a);
 
-    A* array = MM_NEW_A(A, 10);
-    MM_DELETE_A(array, 10);
+    //A* array = MM_NEW_A(A, 10);
+    //MM_DELETE_A(array, 10);
+#pragma endregion
+
+#pragma region Global Override Test
+
+    A* a = new A();
+    delete(a);
+
+    A* arrayGeneral = new A[10]; // 10 * 8(sizeof(A)) = 80 > 64 => GeneralAllocator
+    delete[] arrayGeneral;
+
+    A* array = new A[5]; // 5 * 8 = 40 < 64 => SmallObjAllocator
+    delete[] array;
+#pragma endregion
 
     return 0;
 }
