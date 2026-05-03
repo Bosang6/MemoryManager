@@ -42,10 +42,10 @@ int main()
     A* a = new A();
     delete(a);
 
-    A* arrayGeneral = new A[10]; // 10 * 8(sizeof(A)) = 80 > 64 => GeneralAllocator
+    A* arrayGeneral = new A[10]; // 10 * 8(sizeof(A)) + 8(array cookie) = 88 > 64 => GeneralAllocator
     delete[] arrayGeneral;
 
-    A* array = new A[5]; // 5 * 8 = 40 < 64 => SmallObjAllocator
+    A* array = new A[5]; // (5 * 8(sizeof(A)) + 8(array cookie) = 48 < 64 => SmallObjAllocator
     delete[] array;
 #pragma endregion
 

@@ -7,7 +7,6 @@ class GeneralAllocator
 public:
 	void* Allocate(std::size_t size)
 	{
-		std::cout << "using GeneralAllocator" << std::endl;
 #ifdef USE_MEMORY_MANAGER_GLOBAL
 		//::operator new by default use malloc
 		return std::malloc(size);
