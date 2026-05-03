@@ -5,7 +5,7 @@
 
 #define MM_MALLOC(size)    MM_Malloc(size)
 #define MM_FREE(ptr, size) MM_Free(ptr, size)
-#define MM_NEW(T, ...)     MM_New<T>(__VA__ARGS__)
+#define MM_NEW(T, ...)     MM_New<T>(__VA_ARGS__)
 #define MM_DELETE(ptr)     MM_Delete(ptr)
 
 #pragma region C style Functions
@@ -46,7 +46,7 @@ T* MM_New(Args&&... args)
 }
 
 template<typename T>
-void MM_Delete(void* ptr)
+void MM_Delete(T* ptr)
 {
 	if (!ptr)
 	{

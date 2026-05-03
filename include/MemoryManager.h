@@ -7,6 +7,9 @@
 #define MAX_SMALL_OBJECT_SIZE 64
 #endif
 
+#ifndef DEFAULT_CHUNK_SIZE
+#define DEFAULT_CHUNK_SIZE 4096
+#endif
 
 class MemoryManager
 {
@@ -16,7 +19,7 @@ public:
 	void Deallocate(void* ptr, std::size_t size);
 
 private:
-	MemoryManager() = default;
+	MemoryManager();
 	~MemoryManager() = default;
 	MemoryManager(const MemoryManager&) = delete;
 	MemoryManager& operator=(const MemoryManager&) = delete;
