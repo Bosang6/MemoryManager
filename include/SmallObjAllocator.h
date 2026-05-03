@@ -2,6 +2,7 @@
 #include <cstddef>
 #include <vector>
 #include "FixedAllocator.h"
+#include "InternalAllocator.h"
 class SmallObjAllocator
 {
 public:
@@ -14,7 +15,7 @@ private:
 	SmallObjAllocator(const SmallObjAllocator&);
 	SmallObjAllocator& operator=(const SmallObjAllocator&);
 
-	typedef std::vector<FixedAllocator> Pool;
+	typedef std::vector<FixedAllocator, InternalAllocator<FixedAllocator>> Pool;
 	Pool pool;
 	FixedAllocator* pLastAlloc;
 	FixedAllocator* pLastDealloc;

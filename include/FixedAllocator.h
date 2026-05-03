@@ -1,7 +1,7 @@
 #pragma once
 #include <vector>
 #include "Chunk.h"
-
+#include "InternalAllocator.h"
 #ifndef DEFAULT_CHUNK_SIZE
 #define DEFAULT_CHUNK_SIZE 4096
 #endif
@@ -24,7 +24,7 @@ private:
 	void Swap(FixedAllocator& rhs);
 	std::size_t blockSize;
 	unsigned char numBlocks;
-	typedef std::vector<Chunk> Chunks;
+	typedef std::vector<Chunk, InternalAllocator<Chunk>> Chunks;
 	Chunks chunks;
 	Chunk* allocChunk;
 	Chunk* deallocChunk;
