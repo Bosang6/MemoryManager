@@ -1,16 +1,26 @@
 #pragma once
 #include <cstddef>
-
+#include <cstdlib>
+#include <iostream>
 class GeneralAllocator
 {
 public:
 	void* Allocate(std::size_t size)
 	{
+		std::cout << "using GeneralAllocator" << std::endl;
+#ifdef USE_MEMORY_MANAGER_GLOBAL
+		return std::malloc(size);
+#else
 		return ::operator new(size);
+#endif
 	}
 
 	void Deallocate(void* ptr)
 	{
+#ifdef USE_MEMORY_MANAGER_GLOBAL
+		return std::free(ptr);
+#else
 		::operator delete(ptr);
+#endif
 	}
 };

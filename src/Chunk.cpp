@@ -1,8 +1,13 @@
 #include "Chunk.h"
-
+#include <cstdlib>
 void Chunk::Init(std::size_t blockSize, unsigned char blocks) {
+#ifdef USE_MEMORY_MANAGER_GLOBAL
+	pData = static_cast<unsigned char*>(
+		std::malloc(blockSize * blocks)
+		);
+#else
 	pData = new unsigned char[blockSize * blocks];
-
+#endif
 	firstAvailableBlock = 0;
 	blocksAvailable = blocks;
 
@@ -58,6 +63,10 @@ void Chunk::Deallocate(void* p, std::size_t blockSize)
 
 void Chunk::Release()
 {
+#ifdef USE_MEMORY_MANAGER_GLOBAL
+	std::free(pData);
+#else
 	delete[] pData;
+#endif
 }
 
