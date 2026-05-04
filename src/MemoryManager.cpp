@@ -11,21 +11,37 @@ MemoryManager::MemoryManager()
 {
 }
 
+MemoryManager::~MemoryManager()
+{
+	tracker.DumpLeaks();
+	tracker.PrintStats();
+}
+
 void* MemoryManager::Allocate(std::size_t size)
 {
+	void* ptr = nullptr;
 	if (size < MAX_SMALL_OBJECT_SIZE)
 	{
-		return smallObjAllocator.Allocate(size);
+		ptr = smallObjAllocator.Allocate(size);
 	}
 	else
 	{
-		return generalAllocator.Allocate(size);
+		ptr = generalAllocator.Allocate(size);
 	}
+
+	if (ptr)
+	{
+		tracker.RegisterAllocation(ptr, size);
+	}
+
+	return ptr;
 }
 
 void MemoryManager::Deallocate(void* ptr, std::size_t size)
 {
 	if (!ptr) return;
+
+	tracker.RegisterDeallocation(ptr, size);
 
 	if (size <= MAX_SMALL_OBJECT_SIZE)
 	{

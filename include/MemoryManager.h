@@ -2,6 +2,7 @@
 #include <cstddef>
 #include "SmallObjAllocator.h"
 #include "GeneralAllocator.h"
+#include "MemoryTracker.h"
 
 #ifndef MAX_SMALL_OBJECT_SIZE
 #define MAX_SMALL_OBJECT_SIZE 64
@@ -20,11 +21,12 @@ public:
 
 private:
 	MemoryManager();
-	~MemoryManager() = default;
+	~MemoryManager();
 	MemoryManager(const MemoryManager&) = delete;
 	MemoryManager& operator=(const MemoryManager&) = delete;
 
 private:
 	SmallObjAllocator smallObjAllocator;
 	GeneralAllocator generalAllocator;
+	MemoryTracker tracker;
 };
