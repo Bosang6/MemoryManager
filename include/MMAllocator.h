@@ -2,7 +2,7 @@
 #include <cstddef>
 #include <limits>
 #include <new>
-
+#include <iostream>
 #include "MemoryManager.h"
 
 template<typename T>
@@ -31,7 +31,7 @@ public:
         }
 
         std::size_t size = n * sizeof(T);
-
+        std::cout << "hi" << std::endl;
         void* ptr = MemoryManager::Instance().Allocate(size);
 
         if (!ptr)
@@ -48,7 +48,6 @@ public:
         {
             return;
         }
-
         MemoryManager::Instance().Deallocate(ptr, n * sizeof(T));
     }
 

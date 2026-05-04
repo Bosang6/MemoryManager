@@ -2,6 +2,7 @@
 #include "MemoryFunctions.h"
 #include <iostream>
 #include "MemoryManagerGlobal.h"
+#include "MMAllocator.h"
 class A 
 {
 public:
@@ -39,15 +40,26 @@ int main()
 
 #pragma region Global Override Test
 
-    A* a = new A();
-    delete(a);
+    //A* a = new A();
+    //delete(a);
 
-    A* arrayGeneral = new A[10]; // 10 * 8(sizeof(A)) + 8(array cookie) = 88 > 64 => GeneralAllocator
-    delete[] arrayGeneral;
+    //A* arrayGeneral = new A[10]; // 10 * 8(sizeof(A)) + 8(array cookie) = 88 > 64 => GeneralAllocator
+    //delete[] arrayGeneral;
 
-    A* array = new A[5]; // (5 * 8(sizeof(A)) + 8(array cookie) = 48 < 64 => SmallObjAllocator
-    delete[] array;
+    //A* array = new A[5]; // (5 * 8(sizeof(A)) + 8(array cookie) = 48 < 64 => SmallObjAllocator
+    //delete[] array;
 #pragma endregion
+
+#pragma region Custom Allocator in STL
+    std::vector<A, MMAllocator<A>> vec;
+
+    vec.emplace_back(1, 2);
+    vec.emplace_back(3, 4);
+    vec.emplace_back(5, 6);
+
+    return 0;
+#pragma endregion
+
 
     return 0;
 }
