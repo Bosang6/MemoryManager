@@ -90,6 +90,4 @@ void operator delete[](void* ptr) noexcept
 
 #pragma endregion
 
-
-
 #endif

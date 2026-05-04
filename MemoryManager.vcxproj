@@ -141,6 +141,7 @@
     <ClInclude Include="include\MemoryFunctions.h" />
     <ClInclude Include="include\MemoryManager.h" />
     <ClInclude Include="include\MemoryManagerGlobal.h" />
+    <ClInclude Include="include\MMAllocator.h" />
     <ClInclude Include="include\SingletonHolder.h" />
     <ClInclude Include="include\SmallObjAllocator.h" />
     <ClInclude Include="include\SmallObject.h" />
