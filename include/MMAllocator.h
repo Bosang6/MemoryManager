@@ -31,7 +31,6 @@ public:
         }
 
         std::size_t size = n * sizeof(T);
-        std::cout << "hi" << std::endl;
         void* ptr = MemoryManager::Instance().Allocate(size);
 
         if (!ptr)

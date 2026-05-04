@@ -17,11 +17,14 @@ public:
     {
         std::cout << "m_a = " << m_a << ", m_b = " << m_b << std::endl;
     }
+    void Print() const
+    {
+        std::cout << "A(" << m_a << ", " << m_b << ")\n";
+    }
 
 private:
     int m_a, m_b;
 };
-
 
 int main()
 {
@@ -39,27 +42,24 @@ int main()
 #pragma endregion
 
 #pragma region Global Override Test
+    A* a = new A();
+    delete(a);
 
-    //A* a = new A();
-    //delete(a);
+    A* arrayGeneral = new A[10]; // 10 * 8(sizeof(A)) + 8(array cookie) = 88 > 64 => GeneralAllocator
+    delete[] arrayGeneral;
 
-    //A* arrayGeneral = new A[10]; // 10 * 8(sizeof(A)) + 8(array cookie) = 88 > 64 => GeneralAllocator
-    //delete[] arrayGeneral;
-
-    //A* array = new A[5]; // (5 * 8(sizeof(A)) + 8(array cookie) = 48 < 64 => SmallObjAllocator
-    //delete[] array;
+    A* array = new A[5]; // (5 * 8(sizeof(A)) + 8(array cookie) = 48 < 64 => SmallObjAllocator
+    delete[] array;
 #pragma endregion
 
 #pragma region Custom Allocator in STL
-    std::vector<A, MMAllocator<A>> vec;
+    //std::vector<A, MMAllocator<A>> vec;
 
-    vec.emplace_back(1, 2);
-    vec.emplace_back(3, 4);
-    vec.emplace_back(5, 6);
+    //vec.emplace_back(1, 2);
+    //vec.emplace_back(3, 4);
+    //vec.emplace_back(5, 6);
 
-    return 0;
 #pragma endregion
-
 
     return 0;
 }
