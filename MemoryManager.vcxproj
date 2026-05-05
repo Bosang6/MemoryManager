@@ -152,6 +152,7 @@
     <ClInclude Include="tests\Bulk.h" />
     <ClInclude Include="tests\SameOrder.h" />
     <ClInclude Include="tests\SmallAllocator_SmallObj.h" />
+    <ClInclude Include="tests\SmallObj_32byte.h" />
     <ClInclude Include="tests\SmallObj_8byte.h" />
     <ClInclude Include="tests\SystemAllocator_SmallObj.h" />
   </ItemGroup>

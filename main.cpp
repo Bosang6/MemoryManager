@@ -5,6 +5,7 @@
 #include "MMAllocator.h"
 #include "Bulk.h"
 #include "SmallObj_8byte.h"
+#include "SmallObj_32byte.h"
 int main()
 {
     //RunAllBenchmarks();
@@ -40,11 +41,19 @@ int main()
 
 #pragma endregion
 
-    TestBulk_SameOrder_System<SmallObj_8byte>(1000000);
-    TestBulk_SameOrder_MM<SmallObj_8byte>(1000000);
+    //TestBulk_SameOrder_System<SmallObj_8byte>(1000000);
+    //TestBulk_SameOrder_MM<SmallObj_8byte>(1000000);
 
-    TestBulk_ReverseOrder_System<SmallObj_8byte>(1000000);
-    TestBulk_ReverseOrder_MM<SmallObj_8byte>(1000000);
+    //TestBulk_ReverseOrder_System<SmallObj_8byte>(1000000);
+    //TestBulk_ReverseOrder_MM<SmallObj_8byte>(1000000);
+
+    
+
+    TestBulk_SameOrder_System<SmallObj_32byte>(1000000);
+    TestBulk_SameOrder_MM<SmallObj_32byte>(1000000);
+
+    TestBulk_ReverseOrder_System<SmallObj_32byte>(1000000);
+    TestBulk_ReverseOrder_MM<SmallObj_32byte>(1000000);
 
     return 0;
 }

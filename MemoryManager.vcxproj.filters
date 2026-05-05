@@ -101,5 +101,8 @@
     <ClInclude Include="tests\SameOrder.h">
       <Filter>Test</Filter>
     </ClInclude>
+    <ClInclude Include="tests\SmallObj_32byte.h">
+      <Filter>Test</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

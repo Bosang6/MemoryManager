@@ -4,7 +4,6 @@
 #include "Timer.h"
 #include "MemoryFunctions.h"
 
-#ifdef USE_MEMORY_MANAGER_GLOBAL
 template<typename T>
 void TestBulk_SameOrder_System(std::size_t count)
 {
@@ -12,7 +11,7 @@ void TestBulk_SameOrder_System(std::size_t count)
 	ptrs.reserve(count);
 
 	{
-		Timer timer("System [Global Overload] - Bulk allocation");
+		Timer timer("[SystemAllocator] - Bulk allocation");
 
 		for (std::size_t i = 0; i < count; ++i)
 		{
@@ -21,7 +20,7 @@ void TestBulk_SameOrder_System(std::size_t count)
 	}
 
 	{
-		Timer timer("System [Global Overload] - SameOrder deallocation");
+		Timer timer("[SystemAllocator] - SameOrder deallocation");
 
 		for (std::size_t i = 0; i < count; ++i)
 		{
@@ -37,7 +36,7 @@ void TestBulk_ReverseOrder_System(std::size_t count)
 	ptrs.reserve(count);
 
 	{
-		Timer timer("System [Global Overload] - Bulk allocation");
+		Timer timer("[SystemAllocator] - Bulk allocation");
 
 		for (std::size_t i = 0; i < count; ++i)
 		{
@@ -46,7 +45,7 @@ void TestBulk_ReverseOrder_System(std::size_t count)
 	}
 
 	{
-		Timer timer("System [Global Overload] - ReverseOrder deallocation");
+		Timer timer("[SystemAllocator] - ReverseOrder deallocation");
 
 		for (std::size_t i = count; i > 0; --i)
 		{
@@ -55,57 +54,6 @@ void TestBulk_ReverseOrder_System(std::size_t count)
 	}
 }
 
-#else
-template<typename T>
-void TestBulk_SameOrder_System(std::size_t count)
-{
-	std::vector<T*> ptrs;
-	ptrs.reserve(count);
-
-	{
-		Timer timer("System - Bulk allocation");
-
-		for (std::size_t i = 0; i < count; ++i)
-		{
-			ptrs.push_back(new T());
-		}
-	}
-
-	{
-		Timer timer("System - SameOrder deallocation");
-
-		for (std::size_t i = 0; i < count; ++i)
-		{
-			delete ptrs[i];
-		}
-	}
-}
-
-template<typename T>
-void TestBulk_ReverseOrder_System(std::size_t count)
-{
-	std::vector<T*> ptrs;
-	ptrs.reserve(count);
-
-	{
-		Timer timer("System - Bulk allocation");
-
-		for (std::size_t i = 0; i < count; ++i)
-		{
-			ptrs.push_back(new T());
-		}
-	}
-
-	{
-		Timer timer("System - ReverseOrder deallocation");
-
-		for (std::size_t i = count; i > 0; --i)
-		{
-			delete ptrs[i - 1];
-		}
-	}
-}
-#endif
 template<typename T>
 void TestBulk_SameOrder_MM(std::size_t count)
 {
@@ -113,7 +61,7 @@ void TestBulk_SameOrder_MM(std::size_t count)
 	ptrs.reserve(count);
 
 	{
-		Timer timer("SmallObjAllocator - Bulk allocation");
+		Timer timer("[SmallObjAllocator] - Bulk allocation");
 
 		for (std::size_t i = 0; i < count; ++i)
 		{
@@ -122,7 +70,7 @@ void TestBulk_SameOrder_MM(std::size_t count)
 	}
 
 	{
-		Timer timer("SmallObjAllocator - SameOrder deallocation");
+		Timer timer("[SmallObjAllocator] - SameOrder deallocation");
 
 		for (std::size_t i = 0; i < count; ++i)
 		{
@@ -138,7 +86,7 @@ void TestBulk_ReverseOrder_MM(std::size_t count)
 	ptrs.reserve(count);
 
 	{
-		Timer timer("SmallObjAllocator - Bulk allocation");
+		Timer timer("[SmallObjAllocator] - Bulk allocation");
 
 		for (std::size_t i = 0; i < count; ++i)
 		{
@@ -147,7 +95,7 @@ void TestBulk_ReverseOrder_MM(std::size_t count)
 	}
 
 	{
-		Timer timer("SmallObjAllocator - ReverseOrder deallocation");
+		Timer timer("[SmallObjAllocator] - ReverseOrder deallocation");
 
 		for (std::size_t i = count; i > 0; --i)
 		{
