@@ -40,8 +40,11 @@ int main()
 
 #pragma endregion
 
-    TestBulk_System<SmallObj_8byte>(1000000);
-    TestBulk_MM<SmallObj_8byte>(1000000);
+    TestBulk_SameOrder_System<SmallObj_8byte>(1000000);
+    TestBulk_SameOrder_MM<SmallObj_8byte>(1000000);
+
+    TestBulk_ReverseOrder_System<SmallObj_8byte>(1000000);
+    TestBulk_ReverseOrder_MM<SmallObj_8byte>(1000000);
 
     return 0;
 }
