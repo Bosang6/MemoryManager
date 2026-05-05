@@ -30,9 +30,6 @@
     <ClCompile Include="src\SmallObjAllocator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="tests\AllocatorBenchmark.cpp">
-      <Filter>Test</Filter>
-    </ClCompile>
     <ClCompile Include="src\MemoryManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -53,23 +50,8 @@
     <ClInclude Include="include\SmallObjAllocator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\SmallObject.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\SingletonHolder.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\Timer.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="tests\AllocatorBenchmark.h">
-      <Filter>Test</Filter>
-    </ClInclude>
-    <ClInclude Include="tests\SystemAllocator_SmallObj.h">
-      <Filter>Test</Filter>
-    </ClInclude>
-    <ClInclude Include="tests\SmallAllocator_SmallObj.h">
-      <Filter>Test</Filter>
     </ClInclude>
     <ClInclude Include="include\GeneralAllocator.h">
       <Filter>Header Files</Filter>
@@ -96,9 +78,6 @@
       <Filter>Test</Filter>
     </ClInclude>
     <ClInclude Include="tests\Bulk.h">
-      <Filter>Test</Filter>
-    </ClInclude>
-    <ClInclude Include="tests\SameOrder.h">
       <Filter>Test</Filter>
     </ClInclude>
     <ClInclude Include="tests\SmallObj_32byte.h">

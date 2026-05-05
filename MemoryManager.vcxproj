@@ -132,7 +132,6 @@
     <ClCompile Include="src\MemoryManagerGlobal.cpp" />
     <ClCompile Include="src\MemoryTracker.cpp" />
     <ClCompile Include="src\SmallObjAllocator.cpp" />
-    <ClCompile Include="tests\AllocatorBenchmark.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Chunk.h" />
@@ -144,17 +143,11 @@
     <ClInclude Include="include\MemoryManagerGlobal.h" />
     <ClInclude Include="include\MemoryTracker.h" />
     <ClInclude Include="include\MMAllocator.h" />
-    <ClInclude Include="include\SingletonHolder.h" />
     <ClInclude Include="include\SmallObjAllocator.h" />
-    <ClInclude Include="include\SmallObject.h" />
     <ClInclude Include="include\Timer.h" />
-    <ClInclude Include="tests\AllocatorBenchmark.h" />
     <ClInclude Include="tests\Bulk.h" />
-    <ClInclude Include="tests\SameOrder.h" />
-    <ClInclude Include="tests\SmallAllocator_SmallObj.h" />
     <ClInclude Include="tests\SmallObj_32byte.h" />
     <ClInclude Include="tests\SmallObj_8byte.h" />
-    <ClInclude Include="tests\SystemAllocator_SmallObj.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
