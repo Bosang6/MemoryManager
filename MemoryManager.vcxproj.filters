@@ -92,5 +92,11 @@
     <ClInclude Include="include\MemoryTracker.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="tests\SmallObj_8byte.h">
+      <Filter>Test</Filter>
+    </ClInclude>
+    <ClInclude Include="tests\Bulk.h">
+      <Filter>Test</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

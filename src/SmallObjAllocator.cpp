@@ -17,7 +17,7 @@ SmallObjAllocator::SmallObjAllocator(
 	, maxObjectSize(maxObjectSize)
 {
 }
-// 迭代器和lower_bound需要仔细研究一下语法
+
 void* SmallObjAllocator::Allocate(std::size_t numBytes)
 {
 	if (numBytes > maxObjectSize)

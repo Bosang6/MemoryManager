@@ -115,7 +115,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;_CONSOLE;USE_MEMORY_MANAGER_GLOBAL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(ProjectDir)include;$(ProjectDir)tests</AdditionalIncludeDirectories>
     </ClCompile>
@@ -149,7 +149,9 @@
     <ClInclude Include="include\SmallObject.h" />
     <ClInclude Include="include\Timer.h" />
     <ClInclude Include="tests\AllocatorBenchmark.h" />
+    <ClInclude Include="tests\Bulk.h" />
     <ClInclude Include="tests\SmallAllocator_SmallObj.h" />
+    <ClInclude Include="tests\SmallObj_8byte.h" />
     <ClInclude Include="tests\SystemAllocator_SmallObj.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

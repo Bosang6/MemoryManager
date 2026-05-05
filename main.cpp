@@ -3,29 +3,8 @@
 #include <iostream>
 #include "MemoryManagerGlobal.h"
 #include "MMAllocator.h"
-class A 
-{
-public:
-    A()
-        :m_a(10), m_b(20)
-    { }
-    A(int a, int b) {
-        m_a = a;
-        m_b = b;
-    }
-    ~A()
-    {
-        std::cout << "m_a = " << m_a << ", m_b = " << m_b << std::endl;
-    }
-    void Print() const
-    {
-        std::cout << "A(" << m_a << ", " << m_b << ")\n";
-    }
-
-private:
-    int m_a, m_b;
-};
-
+#include "Bulk.h"
+#include "SmallObj_8byte.h"
 int main()
 {
     //RunAllBenchmarks();
@@ -42,14 +21,14 @@ int main()
 #pragma endregion
 
 #pragma region Global Override Test
-    A* a = new A();
-    delete(a);
+    //A* a = new A();
+    //delete(a);
 
-    A* arrayGeneral = new A[10]; // 10 * 8(sizeof(A)) + 8(array cookie) = 88 > 64 => GeneralAllocator
-    delete[] arrayGeneral;
+    //A* arrayGeneral = new A[10]; // 10 * 8(sizeof(A)) + 8(array cookie) = 88 > 64 => GeneralAllocator
+    //delete[] arrayGeneral;
 
-    A* array = new A[5]; // (5 * 8(sizeof(A)) + 8(array cookie) = 48 < 64 => SmallObjAllocator
-    delete[] array;
+    //A* array = new A[5]; // (5 * 8(sizeof(A)) + 8(array cookie) = 48 < 64 => SmallObjAllocator
+    //delete[] array;
 #pragma endregion
 
 #pragma region Custom Allocator in STL
@@ -60,6 +39,9 @@ int main()
     //vec.emplace_back(5, 6);
 
 #pragma endregion
+
+    TestBulk_System<SmallObj_8byte>(1000000);
+    TestBulk_MM<SmallObj_8byte>(1000000);
 
     return 0;
 }
